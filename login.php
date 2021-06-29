@@ -16,12 +16,6 @@
                 <!-- Username -->
                 <label for="username">Ingrese nombre de usuario:</label>
                 <input type="text" id="username" name="username" placeholder="Nombre de usuario" class="form-item">
-                <p>
-                    <?php if ($errors->get('username')) {
-                    echo 'Los datos ingresados no son validos.';}
-                    ?>
-                </p>
-
                 <!-- Password -->
                 <label for="password">Ingrese contraseña:</label>
                 <input type="password" id="password" name="password" placeholder="Contraseña" class="form-item">
@@ -37,4 +31,3 @@
     include("layouts/footer.php");
     ?>
 </html>
-<script src="js/login.js"></script>

@@ -1,7 +1,7 @@
 <?php
 require('./controllers/ArticleController.php');
-$list = new ArticleController();
-$articles = $list -> getAll(); 
+$articleController = new ArticleController();
+$articles = $articleController -> getAll(); 
 ?>
 
 <!DOCTYPE html>

@@ -1,16 +1,17 @@
 <?php
 require('./controllers/ArticleController.php');
-$list = new ArticleController();
-
+require('./controllers/BrandController.php');
+$articleController = new ArticleController();
+$brandController = new BrandController();
+$message = null;
 if(isset($_POST['add']) && $_POST['add'] == 'addArticle') {
-    if(($_POST['brand'] == '') || ($_POST['model'] == '') || ($_POST['serial_number'] == '') || ($_POST['responsable_name'] == '')) {
+    if(($_POST['id'] == '') || ($_POST['brand'] == '') || ($_POST['model'] == '') || ($_POST['serial_number'] == '') || ($_POST['responsable_name'] == '')) {
         $message = "* Todos los datos son requeridos.";
     } else {
-        //$newArticle = $list -> add($_POST);
+        $_POST['brand'] = $brandController -> getIdByName($_POST['brand']);
+        $newArticle = $articleController -> add($_POST);
         $message= "Artículo ingresado.";
     }
-} else {
-    $message = null;
 }
 ?>
 
@@ -31,6 +32,10 @@ if(isset($_POST['add']) && $_POST['add'] == 'addArticle') {
         <div class="container-form">
             <form action="new-article.php" method="post" enctype="multipart/form-data" class="form">
                 <input type="hidden" name="add" id="add" value="addArticle"/>
+                <!-- ID -->
+                <label for="id">Ingrese ID de la notebook:</label>
+                <input type="text" id="id" name="id" placeholder="ID notebook" class="form-item">
+
                 <!-- Brand -->
                 <label for="brand">Ingrese marca:</label>
                 <select id="brand" name="brand" class="form-item">
@@ -63,7 +68,7 @@ if(isset($_POST['add']) && $_POST['add'] == 'addArticle') {
                 <!-- Submit -->
                 <div style="text-align:center;">
                     <input type="submit" value="Ingresar nueva notebook" class="form-button">
-                    <a class="cancel-button" href="articles.php">Cancelar</a>
+                    <a class="cancel-button" href="articles.php">Volver</a>
                 </div>
             </form>
         </div>

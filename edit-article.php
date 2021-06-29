@@ -1,19 +1,20 @@
 <?php
 require('./controllers/ArticleController.php');
-$list = new ArticleController();
-$article = $list -> getById($_GET["id_article"]);
-if(isset($_POST['update']) && $_POST['update'] =='updateArticle' ) {
-    if( ($_POST['brand'] == '') || ($_POST['model'] == '') || ($_POST['responsable_name'] =='')) {
+require('./controllers/BrandController.php');
+$articleController = new ArticleController();
+$article = $articleController -> getById($_GET["id_article"]);
+$brandController = new BrandController();
+$message = null;
+if(isset($_POST['update']) && $_POST['update'] =='updateArticle') {
+    if(($_POST['brand'] == '') || ($_POST['model'] == '') || ($_POST['responsable_name'] =='')) {
         $message = "* Todos los datos son requeridos.";
     } else {
-        $list -> modifyById($_GET["id_article"], $_POST);
+        $brand_id = $brandController -> getIdByName($_POST['brand']);
+        $_POST['brand_id'] = $brand_id->id;
+        $articleController -> modifyById($_GET["id_article"], $_POST);
         $message = "Artículo actualizado.";
     }
-    
-} else {
-    $message = null;
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -70,7 +71,7 @@ if(isset($_POST['update']) && $_POST['update'] =='updateArticle' ) {
                 <!-- Submit -->
                 <div style="text-align:center;">
                     <input type="submit" value="Actualizar" class="form-button">
-                    <a class="cancel-button" href="articles.php">Cancelar</a>
+                    <a class="cancel-button" href="articles.php">Volver</a>
                 </div>
             </form>
         </div>

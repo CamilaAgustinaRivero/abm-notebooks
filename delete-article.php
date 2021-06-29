@@ -1,12 +1,12 @@
 <?php
 require('./controllers/ArticleController.php');
-$list = new ArticleController();
+$articleController = new ArticleController();
 
 if(!isset($_GET['id_article'])) {
     $message = "No se identificó el artículo a eliminar.";
 } else {
     settype($_GET['id_article'], 'integer');
-    $list -> deleteById($_GET['id_article']);
+    $articleController -> deleteById($_GET['id_article']);
     $message = "Artículo eliminado.";
 }
 ?>

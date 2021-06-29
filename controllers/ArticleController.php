@@ -30,9 +30,12 @@ class ArticleController
         return $statement->fetchAll();
     }
 
-    /*public function add($obj)
-    {
-    }*/
+    public function add($obj)
+    {   
+        $sqlAdd = "INSERT INTO articles (serial_number, responsable_name, id, model, brand_id)"
+        . "VALUES ('".$obj['serial_number']."', '".$obj['responsable_name']."', '".$obj['id']."', '".$obj['model']."', '".$obj['brand']->id."')";
+        $statementAdd = $this->conn->getConnection()->prepare($sqlAdd)->execute();
+    }
 
     public function deleteById($id)
     {
@@ -44,11 +47,10 @@ class ArticleController
 
     public function modifyById($id, $obj)
     {
-        //$sqlModify = "UPDATE Articles SET `model`=:model, `brand_id`=:brand_id, `responsable_name`=:responsable_name WHERE `id`=:id";
-        $sqlModify = "UPDATE articles SET `model`=:model, `responsable_name`=:responsable_name WHERE `id`=:id";
+        $sqlModify = "UPDATE Articles SET `model`=:model, `brand_id`=:brand_id, `responsable_name`=:responsable_name WHERE `id`=:id";
         $statementModify = $this->conn->getConnection()->prepare($sqlModify);
         $statementModify->bindValue(':model', $obj['model']);
-        //$statementModify->bindValue(':brand_id', $obj['brand']);
+        $statementModify->bindValue(':brand_id', $obj['brand_id']);
         $statementModify->bindValue(':responsable_name', $obj['responsable_name']);
         $statementModify->bindValue(':id', $id);
         $statementModify->execute();
