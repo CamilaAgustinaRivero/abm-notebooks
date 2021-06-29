@@ -1,20 +1,17 @@
 <?php
 require('./controllers/ArticleController.php');
-$list = new ArticleController();
+$articleController = new ArticleController();
 $article = null;
+$message = null;
 if(isset($_POST['search']) && $_POST['search'] == 'searchArticle') {
     if(($_POST['search-box'] == '')) {
         $message = "No se ingresaron datos en el buscador.";
     } else {
-        $article = $list -> searchById($_POST["search-box"]);
+        $article = $articleController -> searchById($_POST["search-box"]);
         if (!$article) {
             $message = "No se encontraron resultados.";
-        } else {
-            $message = null;
         }
     }
-} else {
-    $message = null;
 }
 ?>
 
