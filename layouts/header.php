@@ -22,7 +22,7 @@ $loginController = new LoginController();
                     <a class="nav-item" href="search-article.php">Buscar notebook</a>
                 </li>
                 <li>
-                    <a class="nav-item" href="#">Calcular costo de encomienda</a>
+                    <a class="nav-item" href="calculator.php">Calcular costo de encomienda</a>
                 </li>
                 <?php if($loginController -> logged_in()): ?>
                     <li>
