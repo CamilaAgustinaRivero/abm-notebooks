@@ -54,7 +54,7 @@
     background-color: #333333;
 }
 
-.navbar .nav-item, .navbar .nav-button, .logout-button {
+.navbar .nav-item, .nav-button, .logout-button {
     display: block;
     float: left;
     padding: 20px;
@@ -77,6 +77,7 @@
     border-radius: 5px;
     background-color: #865596;
 }
+
 .logout-button {
     background-color: #C54F34;
 }

@@ -33,7 +33,7 @@ class LoginController {
 
     public function sessionDestroy() 
     {
-        sessionDestroy();
+        session_destroy();
     }
 }
 ?>

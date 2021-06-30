@@ -26,9 +26,9 @@ $loginController = new LoginController();
                 </li>
                 <?php if($loginController -> logged_in()): ?>
                     <li>
-                        <button class="logout-button">
+                        <a class="logout-button" href=logout.php>
                             Cerrar sesión
-                        </button>
+                        </a>
                     </li>
                 <?php else: ?>
                     <li>
