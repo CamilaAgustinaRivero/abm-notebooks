@@ -1,7 +1,6 @@
 <?php
 require_once('./database/Connection.php');
 require_once('./models/Brand.php');
-
 class BrandController {
     private $conn;
 

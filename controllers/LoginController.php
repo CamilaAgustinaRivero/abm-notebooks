@@ -1,7 +1,6 @@
 <?php
 require_once('./database/Connection.php');
 require_once('./models/User.php');
-
 class LoginController {
     private $conn;
 
@@ -33,6 +32,7 @@ class LoginController {
 
     public function sessionDestroy() 
     {
+        //session_unset();
         session_destroy();
     }
 }

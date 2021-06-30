@@ -1,7 +1,6 @@
 <?php
 require_once('./database/Connection.php');
 require_once('./models/Article.php');
-
 class ArticleController
 {
     private $conn;

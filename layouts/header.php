@@ -13,13 +13,13 @@ $loginController = new LoginController();
                     </a>
                 </li>
                 <li>
-                   <a class="nav-item" href="new-article.php">Ingresar nueva notebook</a>
+                    <a class="nav-item" href="search-article.php">Buscar notebook</a>
                 </li>
                 <li>
                     <a class="nav-item" href="articles.php">Listado de notebooks</a>
                 </li>
                 <li>
-                    <a class="nav-item" href="search-article.php">Buscar notebook</a>
+                   <a class="nav-item" href="new-article.php">Ingresar nueva notebook</a>
                 </li>
                 <li>
                     <a class="nav-item" href="calculator.php">Calcular costo de encomienda</a>
