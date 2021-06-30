@@ -1,4 +1,6 @@
 <?php
+require('./controllers/ArticleController.php');
+$articleController = new ArticleController();
 if(!isset($_GET['id_article'])) {
     $message = "No se identificó el artículo a eliminar.";
 } else {
@@ -14,7 +16,7 @@ if(!isset($_GET['id_article'])) {
         <?php
         include("layouts/head.php");
         ?>
-        <title>Eliminar notebook</title>
+        <title>Eliminar Notebook</title>
     </head>
     <?php
     include("layouts/header.php");

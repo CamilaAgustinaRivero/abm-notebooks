@@ -9,7 +9,6 @@
     <?php
     include("layouts/header.php");
     $message = null;
-    $login = null;
     if(isset($_POST['session']) && $_POST['session'] == 'sessionStart') {
         if(($_POST['username'] == '') || ($_POST['password'] == '')) {
             $message = "* Todos los datos son requeridos.";
@@ -17,6 +16,7 @@
             $login_data = $loginController -> loginUser($_POST["username"], $_POST["password"]);
             if ($login_data) {
                 $loginController -> sessionStart();
+                header("Location: ./index.php");
             } else {
                 $message = "Los datos ingresados no son correctos.";
             }

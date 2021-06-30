@@ -21,13 +21,13 @@ if(isset($_POST['add']) && $_POST['add'] == 'addArticle') {
         <?php
         include("layouts/head.php");
         ?>
-        <title>Ingresar notebook</title>
+        <title>Ingresar Notebook</title>
     </head>
     <?php
     include("layouts/header.php");
     ?>
     <body>
-        <h1 class="title">Ingresar nueva notebook</h1>
+        <h1 class="title">Ingresar nueva Notebook</h1>
         <hr>
         <?php if($loginController -> logged_in()): ?>
             <div class="container-form">

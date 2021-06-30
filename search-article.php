@@ -21,13 +21,13 @@ if(isset($_POST['search']) && $_POST['search'] == 'searchArticle') {
     <?php
     include("layouts/head.php");
     ?>
-    <title>Buscar notebook</title>
+    <title>Buscar Notebook</title>
     </head>
     <?php
     include("layouts/header.php");
     ?>
     <body>
-        <h1 class="title">Buscar notebook</h1>
+        <h1 class="title">Buscar Notebook</h1>
         <hr>
         <?php if($loginController -> logged_in()): ?>
             <div class="container-search">

@@ -10,13 +10,13 @@ $articles = $articleController -> getAll();
         <?php
         include("layouts/head.php");
         ?>
-        <title>Listado de notebooks</title>
+        <title>Listado de Notebooks</title>
     </head>
     <?php
     include("layouts/header.php");
     ?>
     <body>
-        <h1 class="title">Listado de notebooks</h1>
+        <h1 class="title">Listado de Notebooks</h1>
         <hr>
         <?php if($loginController -> logged_in()): ?>
             <div class="container-table">

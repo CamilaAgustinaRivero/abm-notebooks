@@ -23,14 +23,14 @@ if(isset($_POST['update']) && $_POST['update'] =='updateArticle') {
         <?php
         include("layouts/head.php");
         ?>
-        <title>Editar notebook</title>
+        <title>Editar Notebook</title>
     </head>
     <?php
     include("layouts/header.php");
     ?>
     <body>
         <?php if($loginController -> logged_in()): ?>
-            <h1 class="title">Editar notebook</h1>
+            <h1 class="title">Editar Notebook</h1>
             <hr>
             <div class="container-info">
                 <div class="info">
