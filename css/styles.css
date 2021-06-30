@@ -20,16 +20,6 @@
     align-items: center;
 }
 
-.logout-button {
-    margin: 20px;
-    padding: 15px 30px 15px 30px !important;
-    border-style: none;
-    border-radius: 5px;
-    text-decoration: none;
-    color: white;
-    background-color: #865596;
-}
-
 .error {
     margin-top: 20px;
     color: #C54F34;
@@ -64,7 +54,7 @@
     background-color: #333333;
 }
 
-.navbar .nav-item, .navbar .nav-button {
+.navbar .nav-item, .navbar .nav-button, .logout-button {
     display: block;
     float: left;
     padding: 20px;
@@ -79,13 +69,16 @@
     color: #C54F34;
 }
 
-.nav-button {
+.nav-button, .logout-button {
     float: right !important;
     margin-top: 15px !important;
     padding: 15px 30px 15px 30px !important;
     border-style: none;
     border-radius: 5px;
     background-color: #865596;
+}
+.logout-button {
+    background-color: #C54F34;
 }
 
 /* FORMS */

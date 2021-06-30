@@ -2,8 +2,8 @@
 require('./controllers/ArticleController.php');
 require('./controllers/BrandController.php');
 $articleController = new ArticleController();
-$article = $articleController -> getById($_GET["id_article"]);
 $brandController = new BrandController();
+$article = $articleController -> getById($_GET["id_article"]);
 $message = null;
 if(isset($_POST['update']) && $_POST['update'] =='updateArticle') {
     if(($_POST['brand'] == '') || ($_POST['model'] == '') || ($_POST['responsable_name'] =='')) {
@@ -29,51 +29,55 @@ if(isset($_POST['update']) && $_POST['update'] =='updateArticle') {
     include("layouts/header.php");
     ?>
     <body>
-        <h1 class="title">Editar notebook</h1>
-        <hr>
-        <div class="container-info">
-            <div class="info">
-                <h2>DATOS DE LA NOTEBOOK SELECCIONADA </h2>
-                <p><b>Marca:</b> <?php echo $article[0] -> brand ?></p>
-                <p><b>Modelo:</b> <?php echo $article[0] -> model ?> </p>
-                <p><b>Número de serie:</b> <?php echo $article[0] -> serial_number ?> </p>
-                <p><b>Responsable:</b> <?php echo $article[0] -> responsable_name ?> </p>
-            </div>
-        </div>
-        <div class="container-form">
-            <form method=post action="" class="form">
-                <input type="hidden" name="update" id="update" value="updateArticle"/>
-                <!-- Brand -->
-                <label for="brand">Actualizar marca:</label>
-                <select id="brand" name="brand" class="form-item">
-                    <option value="apple">Apple</option>
-                    <option value="exo">EXO</option>
-                    <option value="exo">Microsoft</option>
-                    <option value="samsung">Samsung</option>
-                </select>
-
-                <!-- Model -->
-                <label for="model">Actualizar modelo:</label>
-                <select id="model" name="model" class="form-item">
-                    <option value="macbook-air">Macbook Air</option>
-                    <option value="macbook-pro">Macbook Pro</option>
-                    <option value="indec">INDEC</option>
-                    <option value="indec">Surface</option>
-                    <option value="galaxy-book">Galaxy Book</option>
-                    <option value="galaxy-chrome">Galaxy Chrome</option>
-                </select>
-
-                <!-- Responsable name -->
-                <label for="responsable_name">Actualizar nombre del responsable de la notebook:</label>
-                <input type="text" id="responsable_name" name="responsable_name" placeholder="Nombre y apellido" class="form-item">
-
-                <span class="error"> <?php echo htmlspecialchars($message)?> </span>
-                <!-- Submit -->
-                <div style="text-align:center;">
-                    <input type="submit" value="Actualizar" class="form-button">
-                    <a class="cancel-button" href="articles.php">Volver</a>
+        <?php if($loginController -> logged_in()): ?>
+            <h1 class="title">Editar notebook</h1>
+            <hr>
+            <div class="container-info">
+                <div class="info">
+                    <h2>DATOS DE LA NOTEBOOK SELECCIONADA </h2>
+                    <p><b>Marca:</b> <?php echo ($article)  ? $article[0] -> brand : 'Sin definir.' ?></p>
+                    <p><b>Modelo:</b> <?php echo ($article)  ? $article[0] -> model : 'Sin definir.' ?> </p>
+                    <p><b>Número de serie:</b> <?php echo ($article)  ? $article[0] -> serial_number : 'Sin definir.' ?> </p>
+                    <p><b>Responsable:</b> <?php echo ($article)  ? $article[0] -> responsable_name : 'Sin definir.' ?> </p>
                 </div>
-            </form>
-        </div>
+            </div>
+            <div class="container-form">
+                <form method=post action="" class="form">
+                    <input type="hidden" name="update" id="update" value="updateArticle"/>
+                    <!-- Brand -->
+                    <label for="brand">Actualizar marca:</label>
+                    <select id="brand" name="brand" class="form-item">
+                        <option value="apple">Apple</option>
+                        <option value="exo">EXO</option>
+                        <option value="exo">Microsoft</option>
+                        <option value="samsung">Samsung</option>
+                    </select>
+
+                    <!-- Model -->
+                    <label for="model">Actualizar modelo:</label>
+                    <select id="model" name="model" class="form-item">
+                        <option value="macbook-air">Macbook Air</option>
+                        <option value="macbook-pro">Macbook Pro</option>
+                        <option value="indec">INDEC</option>
+                        <option value="indec">Surface</option>
+                        <option value="galaxy-book">Galaxy Book</option>
+                        <option value="galaxy-chrome">Galaxy Chrome</option>
+                    </select>
+
+                    <!-- Responsable name -->
+                    <label for="responsable_name">Actualizar nombre del responsable de la notebook:</label>
+                    <input type="text" id="responsable_name" name="responsable_name" placeholder="Nombre y apellido" class="form-item">
+
+                    <span class="error"> <?php echo htmlspecialchars($message)?> </span>
+                    <!-- Submit -->
+                    <div style="text-align:center;">
+                        <input type="submit" value="Actualizar" class="form-button">
+                        <a class="cancel-button" href="articles.php">Volver</a>
+                    </div>
+                </form>
+            </div>
+        <?php else: ?>
+            <p style="margin:20px; text-align:center;">Necesita iniciar sesión para ver esta página.</p>
+        <?php endif; ?>
     </body>
 </html>

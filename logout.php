@@ -9,7 +9,6 @@
     <body>
         <h1 class="title">Log out</h1>
         <div class="container-logout">
-            <h2>Debe iniciar sesión para ver el contenido de esta página.</h2>
             <a class="logout-button" href="login.php">
                 Iniciar sesión
             </a>

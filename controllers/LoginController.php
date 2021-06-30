@@ -20,5 +20,20 @@ class LoginController {
         $statement->setFetchMode(PDO::FETCH_CLASS, "User");
         return $statement->fetch();
     }
+
+    public function sessionStart() 
+    {
+        session_start();
+    }
+
+    public function logged_in() 
+    {
+        return isset($_COOKIE["PHPSESSID"]);
+    }
+
+    public function sessionDestroy() 
+    {
+        sessionDestroy();
+    }
 }
 ?>
