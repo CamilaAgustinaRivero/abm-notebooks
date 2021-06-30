@@ -1,6 +1,8 @@
 <?php
 require('./controllers/ArticleController.php');
+require('./controllers/BrandController.php');
 $articleController = new ArticleController();
+$brandController = new BrandController();
 $article = null;
 $message = null;
 if(isset($_POST['search']) && $_POST['search'] == 'searchArticle') {
@@ -8,6 +10,7 @@ if(isset($_POST['search']) && $_POST['search'] == 'searchArticle') {
         $message = "No se ingresaron datos en el buscador.";
     } else {
         $article = $articleController -> searchById($_POST["search-box"]);
+        $article[0]->brand_id = $brandController -> getById($article[0]->brand_id);
         if (!$article) {
             $message = "No se encontraron resultados.";
         }
@@ -42,7 +45,7 @@ if(isset($_POST['search']) && $_POST['search'] == 'searchArticle') {
             <div class="container-info">
                 <div style="text-align:center;">
                     <h2>RESULTADOS OBTENIDOS</h2>
-                    <p><b>Marca:</b> <?php echo ($article) ? $article[0] -> brand_id : '[Marca]' ?> </p>
+                    <p><b>Marca:</b> <?php echo ($article) ? $article[0] -> brand_id -> name : '[Marca]' ?> </p>
                     <p><b>Modelo:</b> <?php echo ($article) ? $article[0] -> model : '[Modelo]' ?> </p>
                     <p><b>Número de serie:</b> <?php echo ($article) ? $article[0] -> serial_number : '[ABC123]' ?> </p>
                     <p><b>Responsable:</b> <?php echo ($article) ? $article[0] -> responsable_name : '[Nombre y apellido]' ?> </p>
